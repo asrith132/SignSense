@@ -24,7 +24,7 @@ export default function Navigation() {
           <>
             <span>Welcome, {user.name}</span> {/* Display user name */}
             <button
-              onClick={() => logout({ returnTo: window.location.origin })}
+              onClick={() => logout({ returnTo: "http://localhost:5173/" })}
               className="hover:text-blue-500 transition"
             >
               Log Out
@@ -32,7 +32,7 @@ export default function Navigation() {
           </>
         ) : (
           <button
-            onClick={() => loginWithRedirect({ redirect_uri: window.location.origin })}
+            onClick={() => loginWithRedirect({ redirect_uri: "http://localhost:5173/" })}
             className="hover:text-blue-500 transition"
           >
             Log In
