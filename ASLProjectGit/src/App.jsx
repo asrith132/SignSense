@@ -22,7 +22,10 @@ export default function App() {
     <Auth0Provider
       domain="dev-vfqqan6a4x0sdp5k.us.auth0.com"
       clientId="aWhm1zmiQuijDOiG9Tay5g4HsfkWUFP5"
-      authorizationParams={{ redirect_uri: "http://localhost:5173/" }}
+      authorizationParams={{
+        redirect_uri: "http://localhost:5174/",
+        scope: "openid profile email"
+      }}
     >
       <Router>
         <div className="min-h-screen bg-gray-100">
