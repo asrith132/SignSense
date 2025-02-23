@@ -5,6 +5,7 @@ import TextDisplay from "./components/TextDisplay";
 import Controls from "./components/Controls";
 import { connectToRecognitionService, disconnectRecognitionService } from "./services/aslRecognitionService";
 import Learn from "./pages/Learn";
+import Contact from "./pages/Contact";
 import Navigation from "./components/Navigation";
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
             }
           />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
