@@ -8,51 +8,61 @@ import { connectToRecognitionService, disconnectRecognitionService } from "./ser
 import Learn from "./pages/Learn";
 import Contact from "./pages/Contact";
 import Navigation from "./components/Navigation";
+import Leaderboards from "./pages/Leaderboards";
+import About from "./pages/About";
+import Translation from "./pages/Translation";  
+
+
 
 export default function App() {
-  const [recognizedText, setRecognizedText] = useState("");
-  const { isAuthenticated } = useAuth0();  // Use the Auth0 hook to check authentication status
+  const [recognizedText, setRecognizedText] = useState("");
+  const { isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    connectToRecognitionService(setRecognizedText);
-    return () => disconnectRecognitionService();
-  }, []);
+  useEffect(() => {
+    connectToRecognitionService(setRecognizedText);
+    return () => disconnectRecognitionService();
+  }, []);
 
-  return (
-    <Auth0Provider
-      domain="dev-vfqqan6a4x0sdp5k.us.auth0.com"
-      clientId="aWhm1zmiQuijDOiG9Tay5g4HsfkWUFP5"
-      authorizationParams={{
-        redirect_uri: "http://localhost:5174/",
-        scope: "openid profile email"
-      }}
-    >
-      <Router>
-        <div className="min-h-screen bg-gray-100">
-          <Navigation /> {/* Include the navigation bar */}
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <div className="flex flex-col items-center justify-center p-4">
-                  <h1 className="text-3xl font-bold text-blue-600 mb-4">ASL Recognition App</h1>
-                  <VideoFeed />
-                  <TextDisplay recognizedText={recognizedText} />
-                  <Controls setRecognizedText={setRecognizedText} />
-                </div>
-              }
-            />
-            <Route path="/learn" element={<Learn />} />
-            <Route path="/contact" element={<Contact />} />
-            
-            {/* Protect /dashboard route */}
-            <Route
-              path="/dashboard"
-              element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
-            />
-          </Routes>
-        </div>
-      </Router>
-    </Auth0Provider>
-  );
+  return (
+    <Auth0Provider
+      domain="dev-vfqqan6a4x0sdp5k.us.auth0.com"
+      clientId="aWhm1zmiQuijDOiG9Tay5g4HsfkWUFP5"
+      authorizationParams={{
+        redirect_uri: "http://localhost:5173/",
+        scope: "openid profile email"
+      }}
+    >
+      <Router>
+        <div className="min-h-screen bg-gray-100">
+          <Navigation /> {/* Include the navigation bar */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="flex flex-col items-center justify-center p-4">
+                  <h1 className="text-3xl font-bold text-blue-600 mb-4">ASL Recognition App</h1>
+                  <VideoFeed />
+                  <TextDisplay recognizedText={recognizedText} />
+                  <Controls setRecognizedText={setRecognizedText} />
+                </div>
+              }
+            />
+            <Route path="/learn" element={<Learn />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/leaderboards" element={<Leaderboards />} />
+            <Route path="/about" element={<About />} />  
+            <Route path="/translation" element={<Translation />} />  
+
+
+
+            {/* Protect /dashboard route */}
+            <Route
+              path="/dashboard"
+              element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </div>
+      </Router>
+    </Auth0Provider>
+  );
 }

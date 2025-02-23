@@ -91,7 +91,6 @@ const videoData = [
 
 ];
 
-
 export default function Learn() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userInput, setUserInput] = useState("");
@@ -108,48 +107,51 @@ export default function Learn() {
       setStreak(0);
       setMessage(`❌ Incorrect! The correct answer was: ${currentVideo.answer}. Try again.`);
     }
-  
+
     // Move to the next random video
     const nextIndex = Math.floor(Math.random() * videoData.length);
     setCurrentIndex(nextIndex);
     setUserInput("");
-  };  
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-8">
-      <h1 className="text-4xl font-bold text-green-600 mb-6">Learn ASL</h1>
-      <p className="text-xl mb-6">Welcome to the learning section of the ASL recognition website!</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
+      <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-600 mb-6 drop-shadow-lg">
+        Learn ASL
+      </h1>
+      
+      <div className="w-full max-w-3xl bg-gray-800 shadow-lg rounded-2xl p-6 border border-gray-700 text-center">
+        <p className="text-lg text-gray-300 mb-4">Improve your ASL skills by watching videos and typing the correct sign.</p>
 
-      <div className="mt-8 flex flex-col items-center w-full">
-        {/* Larger video player */}
+        {/* Video Player */}
         <video 
           key={currentVideo.src} 
           src={currentVideo.src} 
           controls 
           autoPlay 
-          className="w-3/4 md:w-1/2 lg:w-2/3 xl:w-1/2 rounded-lg shadow-md"
+          className="w-full rounded-lg shadow-md border border-gray-700"
         />
 
-        {/* Larger input */}
+        {/* Input Field */}
         <input
           type="text"
           placeholder="Enter your guess..."
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          className="mt-6 p-3 border border-gray-300 rounded-md text-center text-xl w-4/5 md:w-2/3 lg:w-1/2"
+          className="mt-6 p-3 border border-gray-600 bg-gray-700 rounded-md text-center text-xl text-white w-4/5"
         />
 
-        {/* Larger submit button */}
+        {/* Submit Button */}
         <button
           onClick={handleSubmit}
-          className="mt-6 bg-green-500 text-white px-8 py-4 text-lg rounded-md hover:bg-green-600 transition"
+          className="mt-6 bg-green-500 text-white px-6 py-3 text-lg rounded-md hover:bg-green-600 transition"
         >
           Submit
         </button>
 
-        {/* Message and streak with larger text */}
-        <p className="mt-4 text-2xl">{message}</p>
-        <p className="mt-4 font-bold text-xl text-gray-700">🔥 Streak: {streak}</p>
+        {/* Message and Streak Display */}
+        <p className="mt-4 text-lg text-gray-300">{message}</p>
+        <p className="mt-4 font-bold text-xl text-yellow-400">🔥 Streak: {streak}</p>
       </div>
     </div>
   );

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.3.0",
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
     "@tailwindcss/vite": "^4.0.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
