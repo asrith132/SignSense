@@ -36,7 +36,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd SignSense/ASLProject
+cd SignSense
 ```
 
 2. Install dependencies:
@@ -61,7 +61,7 @@ npm run dev
 ## 🏗️ Project Structure
 
 ```
-ASLProject/
+SignSense/
 ├── src/
 │   ├── components/
 │   │   ├── ASLRecognition.jsx    # Main ASL recognition component
